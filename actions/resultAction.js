@@ -348,7 +348,7 @@ export async function addPosition({
       },
       { new: true }
     );
-    console.log('addPosition: ', addPosition);
+    // console.log('addPosition: ', addPosition);
 
     revalidatePath('/');
 

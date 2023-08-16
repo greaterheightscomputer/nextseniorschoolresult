@@ -18,9 +18,7 @@ const ProfileUpdate = ({ update, user }) => {
       update({ name, image, role });
     }
 
-    // console.log({ name, image, role });
     const res = await updateUser({ name, image, role });
-    // console.log(res);
     if (res?.msg) alert(res?.msg);
   }
 
@@ -36,6 +34,15 @@ const ProfileUpdate = ({ update, user }) => {
               name="name"
               placeholder="Name"
               defaultValue={user?.name}
+              className="p-3 w-full"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              defaultValue={user?.email}
               className="p-3 w-full"
             />
           </div>

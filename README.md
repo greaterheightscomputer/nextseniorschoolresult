@@ -229,7 +229,53 @@ Deploy Vercel
 * create remote repository by going to github.com
 * delete the current github folder in your project by going to file explore
 * add .env file inside .gitignore file
+* C:\ComputerD\nextjs_isale_eko18072023> git init
+* C:\ComputerD\nextjs_isale_eko18072023> git add .
+* C:\ComputerD\nextjs_isale_eko18072023> git commit -m "first commit"
+* C:\ComputerD\nextjs_isale_eko18072023> git branch -M main
+* C:\ComputerD\nextjs_isale_eko18072023> git remote add origin https://github.com/greaterheightscomputer/nextseniorschoolresult.git
+* C:\ComputerD\nextjs_isale_eko18072023> git push -u origin main
+* go to the browser to refresh your remote github site
 
 - deploy vercel
-- config NEXTAUTH_URL in Environment Variables => re-deploy
+
+* go to vercel.com
+* click on Add New -> click on Project
+* click on Import button on this nextseniorschoolresult
+* Expand the Environmental variable to set it up
+  NEXTAUTH_URL: click on Add button
+  NEXTAUTH_SECRET: click on Add button
+  GOOGLE_CLIENT_ID: click on Add button
+  GOOGLE_CLIENT_SECRET: click on Add button
+* click Deploy button
+* click on Continue to Dashboard button
+
 - config in Google Cloud Console
+
+* go to https://console.cloud.google.com/
+* select Next-Auth-30072023
+* click on API APIs & Services -> clck on Credentials
+* click on Web client 1
+* At Authorized JavaScript origins
+* click on ADD URI and copy the deployed url then past it in URIs 2: https://nextseniorschoolresult14082023.vercel.app
+* At Authorized redirect URIs
+* click on ADD URI and past the deployed url then add api/auth/callback/google like this https://nextseniorschoolresult14082023.vercel.app/api/auth/callback/google
+* click on Save button
+* the above configuration enable users use google to sign-in onto your deployed app
+
+- config NEXTAUTH_URL in Environment Variables => re-deploy
+
+* back to vercel.com
+* click on Settings
+* click on Environment Variables
+* click on the three dots on NEXTAUTH_URL -> click on Edit
+* replace http://localhost:3000 with this
+  https://nextseniorschoolresult14082023.vercel.app/
+* click on Save
+* click on Deployment -> click on three dots beside your image icon and click on Redeploy
+  vercel deployed url: https://nextseniorschoolresult14082023.vercel.app
+  url to get the Promotional Result:
+  https://nextseniorschoolresult14082023.vercel.app/termlyResult/promotionalResult
+  url to get the Termly Result:
+  https://nextseniorschoolresult14082023.vercel.app/termlyResult
+  //github url: https://github.com/greaterheightscomputer/nextseniorschoolresult.git

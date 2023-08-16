@@ -13,7 +13,7 @@ const BASE_URL = process.env.NEXTAUTH_URL;
 export async function updateUser({ name, image, role }) {
   try {
     const session = await getServerSession(authOptions);
-    //   console.log(session);
+    console.log(session);
     if (!session) throw new Error('Unauthorization!');
 
     const user = await User.findByIdAndUpdate(
@@ -29,6 +29,30 @@ export async function updateUser({ name, image, role }) {
     if (!user) throw new Error('Email does not exist!');
 
     return { msg: 'Update Profile Successfully!' };
+  } catch (error) {
+    redirect(`/errors?error=${error.message}`);
+  }
+}
+
+export async function updateUserRole({ email, role }) {
+  try {
+    const userEmail = await User.findOne({ email });
+    const id = userEmail._id.toString();
+    if (!userEmail) throw new Error('Email does not exist!');
+    // console.log(id);
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          email,
+          role,
+        },
+      },
+      { new: true }
+    );
+    // console.log('user: ', user);
+    return { msg: 'Update Role Successfully!' };
   } catch (error) {
     redirect(`/errors?error=${error.message}`);
   }

@@ -4,6 +4,7 @@ import ProfileCard from './ProfileCard';
 import ProfileUpdate from './ProfileUpdate';
 import ChangePassword from './ChangePassword';
 import { useSession } from 'next-auth/react';
+import UpdateUserRole from './UpdateUserRole';
 
 const ProfileComponent = ({ user, update }) => {
   //   console.log('ProfileComponent: ', { user });
@@ -14,6 +15,8 @@ const ProfileComponent = ({ user, update }) => {
       <ProfileCard user={user} />
 
       <ProfileUpdate update={update} user={user} />
+
+      <UpdateUserRole update={update} user={user} />
 
       {(session?.user.provider === 'credentials' ||
         user.provider === 'credentials') && <ChangePassword />}
